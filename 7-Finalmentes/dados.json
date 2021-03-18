@@ -1,0 +1,16 @@
+{
+  "Titulo": "Conheça o JSON!",
+  "Obs": "JSON é extremamente simples, por isso não permite uso de comentários!",
+  "Tipos Permitidos": [
+    "Como você pode ver, listas e strings, assim como em JS",
+    42,
+    23.4,
+    true,
+    false,
+    {
+      "Detalhe": "As chaves dos objetos devem sempre ter aspas, diferente de JS"
+    }
+  ],
+  "Uso": "JSON é muito utilizado e tem suporte em outras linguages tabmém. No JS, existe um objeto chamado literalmente JSON, que possui alguns metodos, como parse (que registra um objeto em uma string na sintaxe JSON)",
+  "Veja também": "O YAML é outro tipo de arquivo que é, praticamente, uma evolução do JSON. Sua extensão é .yml ou .yaml, e ele suporta outras features, como comentários e sintaxes mais complexas que usam identação para substituir chaves e aspas."
+}

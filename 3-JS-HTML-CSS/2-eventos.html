@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+
+  <title>Conhecendo os Eventos</title>
+</head>
+
+<body>
+  <h1>Fiu fiu!</h1>
+  <img src="https://i.pinimg.com/originals/50/22/ee/5022eefee0f2cb737a032b9ee90ca6b7.jpg" class="cute amazing" id="tuco"
+    alt="Tuco">
+  <form>
+    <input type="text">
+    <button>Confirmar</button>
+  </form>
+</body>
+
+</html>
+
+<script>
+  // Existe uma CARALHADA de eventos. Deem uma olhada aqui se estiver curiosos: https://www.w3schools.com/jsref/dom_obj_event.asp
+  const catchau = () => alert('Catchau!')
+  const tuco = document.querySelector('#tuco')
+  const form = document.querySelector('form')
+  const input = document.querySelector('input')
+  const button = document.querySelector('button')
+
+  // Existem muitos tipos de eventos - de mouse, de teclado, de form, de documento, de css...
+
+  // Quando um evento é disparado, ele chama todas as funções associadas à ele
+  // Cabe a nós associarmos nossas funções aos eventos!
+
+  // Vamos associar o console.log aos eventos para ver quais parametros nos sao fornecidos!
+
+  // Existem tres maneiras de se esperar por um evento:
+  // 1. Atributo 'on' no JS
+  // tuco.onclick = console.log
+  // So podemos associar uma funcao de cada vez usando esse metodo!
+
+  // 2. Atributo 'on' no proprio HTML
+  // Quem sabe faz ao vivo guizao
+  // So podemos associar uma funcao de cada vez usando esse metodo tambem!
+
+  // 3. Usando o addEventListener
+  // Prefira esse ao primeiro metodo!
+  // tuco.addEventListener('click', console.log)
+
+  // Podemos adicionar quantos quisermos!
+  // tuco.addEventListener('click', catchau)
+
+  // Observe que o atributo onclick nao mudou!
+  // console.log({tuco})
+
+  // Os evento borbulham ate o ultimo elemento pai (bubbling)
+  // document.body.addEventListener('click', console.log)
+  // Observe os valores de target e srcElement no evento
+
+  // Agora note numa coisa:
+
+  // tuco.addEventListener('click', console.log)
+  // Observe que com esse listener, clicar no tuco ativa os 2 listeners
+  // Pois o evento borbulha ate o handler do Tuco e depois ainda continua borbulhando!
+
+  // Podemos interromper o borbulhamento
+  // tuco.addEventListener('click', event => {
+  //   event.stopPropagation()
+  // })
+
+  // E eh isso! Vou passar por mais alguns eventos legais agora:
+
+  // De documento
+
+  // O mais relevante é o DOMContentLoaded.
+  // document.addEventListener('DOMContentLoaded', catchau)
+
+  // De form
+
+  // focus ativa quando vc foca em um elemento do form
+  // input.addEventListener('focus', console.log)
+
+  // submit eh o classico
+  // form.addEventListener('submit', console.log)  
+
+  // Uai, pera, o que eh isso? Ele ta recarregando a pagina?
+  // Explica ai guizao!
+
+  // form.addEventListener('submit', (event) => {
+  //   event.preventDefault()
+  //   console.log(event)
+  // })
+
+  // De teclado
+
+  // form.addEventListener('keydown', event => {
+  //   console.log(event.keyCode)
+  // })
+
+  // Funciona do document tb!
+  // document.addEventListener('keydown', event => {
+  //   console.log(event.keyCode)
+  // })
+
+  // Temos um keyup tambem
+
+  // De mouse
+
+  // Voce conhece o click, mas e o contextmenu? Eh o botao direito!
+  // tuco.addEventListener('contextmenu', console.log)
+
+  // E olha so:
+  // tuco.addEventListener('contextmenu', event => {
+  //   event.preventDefault()
+  // })
+
+  // Tem uma outra delicinha tambem:
+  // tuco.addEventListener('mouseover', console.log)
+
+  // Observe que ele captura so quando o cursor entra na area
+
+  // Esse aqui eh mais radical
+  // tuco.addEventListener('mousemove', console.log)
+
+  // Slides!
+</script>
+
+<style>
+  :root {
+    font-size: 33px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    font-family: 'Comfortaa', sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  img {
+    margin: -2.4rem 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input {
+    width: 100%;
+
+    font-size: 1rem;
+    padding: 0.5rem;
+
+    border-radius: 30px;
+    border: 1px solid rgb(173, 173, 173);
+
+    margin-bottom: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+
+    border-radius: 30px;
+    border: none;
+
+    background-color: rgb(216, 216, 200);
+
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: rgb(231, 231, 224);
+  }
+</style>

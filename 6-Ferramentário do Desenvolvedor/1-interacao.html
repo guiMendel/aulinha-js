@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+
+  <title>Ferramentário do Desenvolvedor</title>
+</head>
+
+<body>
+  <h1>Fiu fiu!</h1>
+  <img src="https://i.pinimg.com/originals/50/22/ee/5022eefee0f2cb737a032b9ee90ca6b7.jpg" class="cute amazing" id="tuco"
+    alt="Tuco">
+  <form>
+    <!-- <input type="text"> -->
+    <button onclick="interacao_rudimentar(event)">Disparar</button>
+  </form>
+</body>
+
+</html>
+
+<script>
+  function interacao_rudimentar(event) {
+    event.preventDefault()
+
+    // Quando quiser apenas passar uma informacao
+    alert('Olha pra mim!')
+
+    // Quando quiser pedir um input
+    console.log(
+      prompt('Me conta alguma coisa!')
+    )
+
+    // Quando quiser apenas um sim / nao
+    console.log(
+      confirm('Voce sabia?')
+    )
+  }
+</script>
+
+<style>
+  :root {
+    font-size: 33px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Comfortaa', sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  img {
+    margin: -2.4rem 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input {
+    width: 100%;
+
+    font-size: 1rem;
+    padding: 0.5rem;
+
+    border-radius: 30px;
+    border: 1px solid rgb(173, 173, 173);
+
+    margin-bottom: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+
+    border-radius: 30px;
+    border: none;
+
+    background-color: rgb(216, 216, 200);
+
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: rgb(231, 231, 224);
+  }
+</style>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+  <title>Galeria do Tuco</title>
+</head>
+
+<body>
+  <aside>
+    <h1>Galeria do Tuco</h1>
+    <div id='gallery'></div>
+    <button onclick="generatePicture()">Gerar nova foto</button>
+  </aside>
+  <img id="displayPicture" src="https://source.unsplash.com/random/1600x1050?bird" alt="Imagem do Unsplash">
+</body>
+
+</html>
+
+<script>
+  const galleryUrls = [
+    'https://source.unsplash.com/random/1600x1050?bird',
+    'https://source.unsplash.com/random/1600x1050?arara',
+    'https://source.unsplash.com/random/1600x1050?fly',
+    'https://source.unsplash.com/random/1600x1050?owl',
+    'https://source.unsplash.com/random/1600x1050?feather',
+  ]
+
+  // Atualiza a galeria para as urls da lista
+  function updateGallery() {
+    // Acessa a div de galeria
+    const gallery = document.getElementById('gallery')
+    // Apaga os elementos atuais
+    gallery.innerHTML = ''
+
+    for (const url of galleryUrls) {
+      // Cria o elemento
+      const picture = document.createElement('img')
+      picture.src = url
+      picture.alt = 'Imagem do Unsplash'
+      picture.onclick = selectPicture
+
+      // Adiciona o elemento ao documento
+      gallery.appendChild(picture)
+    }
+  }
+
+  function generatePicture() {
+    // Solicita um tema para o usuario
+    const theme = prompt('Escolha um tema para a nova foto (em inglês):')
+
+    // Adiciona a url a lista
+    galleryUrls.push(`https://source.unsplash.com/random/1600x1050?${theme}`)
+
+    // Adiciona a foto a galeria
+    updateGallery()
+  }
+
+  function selectPicture(event) {
+    // Encontra o elemento de display
+    const displayPicture = document.getElementById('displayPicture')
+
+    // Atualiza a url
+    displayPicture.src = event.target.src
+  }
+
+  updateGallery()
+</script>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans JP', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: rgb(246, 226, 194);
+    color: rgb(42, 40, 28);
+  }
+
+  aside {
+    height: 100vh;
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+  }
+
+  aside>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 80%;
+    overflow: auto;
+
+    background-color: rgb(58, 51, 45);
+    border-radius: 100px;
+
+    /* hide scrollbar */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+
+  }
+
+  aside>div::-webkit-scrollbar {
+    display: none;
+  }
+
+  h1 {
+    font-family: 'Satisfy', cursive;
+    font-weight: 600;
+    font-size: 3rem;
+    text-align: center;
+
+    padding: 1rem 0;
+  }
+
+  body>img {
+    max-width: 1400px;
+    flex: 1;
+  }
+
+  aside img {
+    margin: 1rem 0;
+    width: 450px;
+
+    border: 40px solid white;
+    border-radius: 100px;
+
+    cursor: pointer;
+  }
+
+  aside button {
+    margin: 1rem 0 0;
+    padding: .5rem 0;
+    border: none;
+    border-radius: 10px;
+
+    width: 70%;
+    background-color: rgb(58, 28, 3);
+
+    color: white;
+    font-size: 1.6rem;
+
+    cursor: pointer;
+  }
+</style>

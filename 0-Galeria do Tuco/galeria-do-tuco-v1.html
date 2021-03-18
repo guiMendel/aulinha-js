@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+
+  <title>Galeria do Tuco</title>
+</head>
+
+<body>
+  <h1>Galeria do Tuco</h1>
+  <main>
+    <img src="https://source.unsplash.com/random/400x300?birdie" alt="Imagem do Unsplash">
+    <img src="https://source.unsplash.com/random/400x300?bird" alt="Imagem do Unsplash">
+    <img src="https://source.unsplash.com/random/400x300?birds" alt="Imagem do Unsplash">
+    <img src="https://source.unsplash.com/random/400x300?owl" alt="Imagem do Unsplash">
+    <img src="https://source.unsplash.com/random/400x300?eagle" alt="Imagem do Unsplash">
+  </main>
+</body>
+
+</html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    background-color: rgb(240, 240, 200);
+    color: rgb(42, 40, 28);
+  }
+
+  h1 {
+    font-family: 'Satisfy', cursive;
+    font-weight: 600;
+    font-size: 7rem;
+
+    border-bottom: 1px solid gray;
+    padding: 0 6rem 4rem;
+    margin: 5rem 0 4rem;
+  }
+
+  main {
+    display: flex;
+    align-items: center;
+
+    max-width: 95vw;
+    overflow: auto;
+  }
+
+  main>img {
+    border: 55px solid white;
+    margin: 0 2rem;
+  }
+</style>

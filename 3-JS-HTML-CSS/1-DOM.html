@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+
+  <title>Introdução ao DOM</title>
+</head>
+
+<body>
+  <h1>Fiu fiu!</h1>
+  <img src="https://i.pinimg.com/originals/50/22/ee/5022eefee0f2cb737a032b9ee90ca6b7.jpg" class="cute amazing" id="tuco"
+    alt="Tuco">
+  <h2>Vamos aprender:</h2>
+  <div>
+    <span><input type="checkbox" name="1" id="1"><label for="1">1. Seleção de objetos</label></span>
+    <span><input type="checkbox" name="2" id="2"><label for="2">2. Acesso dos seus atributos</label></span>
+    <span><input type="checkbox" name="3" id="3"><label for="3">3. Alteração dos atributos</label></span>
+    <span><input type="checkbox" name="4" id="4"><label for="4">4. Remoção e criação de novos elementos</label></span>
+  </div>
+</body>
+
+</html>
+
+<!-- Existe uma tag no proprio HTML que nos permite associar um script à ele! -->
+<script>
+  // Deen uma olhada: https://www.w3schools.com/js/js_htmldom_document.asp
+
+  // Primeiro vamos ver esse tal desse DOM:
+  // console.log(document)
+
+  // Esse macete permite que nos examinemos o objeto sem ativar aquela sintaxe especial do JS
+  // console.log({document})
+
+  ////////////// SELEÇÃO
+
+  // Para encontrar um elemento específico so há duas maneiras: usando seu id
+  const tuco = document.getElementById('tuco')
+  // console.log(tuco)
+
+  // Vamos usar o macete
+  // console.log({
+  //   tuco: document.getElementById('tuco')
+  // })
+
+  // E usando querySelector, que retorna SOMENTE O PRIMEIRO elemento encontrado
+  const heading = document.querySelector('h1')
+  // O querySelector usa a mesma sintaxe de selecao do CSS.
+  // Para encontrar com uma classe, usariamos .classe-tal 
+  // Isso nos da um pouco mais de poder, pois podemos usar os modificadores de selecao do CSS:
+  // document.querySelector('span + span').style.backgroundColor = 'pink'
+  // Retorna o primeiro span que vem imediatamente após outro span
+
+  // Outros metodos de busca retornam um objeto especial: HTMLCollection (sinônimo de dor de cabeça)
+  // Essa porcaria é tipo um array mas muito chato de lidar
+  const steps = document.getElementsByTagName('span')
+  // console.log(steps)
+
+  // Uma vez com a colecao, podemos pegar um elemento especifico
+  // console.log(steps[1])
+
+  // A dor de cabeca é que esse objeto HTMLCollection nao implementa a maior parte
+  // dos metodos do objeto array. Isso significa que as vezes vocês podem se complicar
+  // tentando manipular essas coleções
+
+  // Existe também o getElementsByClassName
+
+  // E também o querySelectorAll, que usa a mesma regra do querySelector mas retorna
+  // todos os resultados na maldita HTMLCollection 
+
+  // Um caso especial é o body, que podemos acessar simplesmente com document.body!
+
+  // Outras coisas uteis para acessar pelo document eh o title e a URL
+  // console.log(document.title)
+  // console.log(document.URL)
+
+  // Deem uma olhada naquele link!!!!! La tem muitas outras coisas legais!
+
+  ////////////// ACESSO
+
+  // Com um elemento em mãos, podemos visualizar alguns de seus atributos
+  // console.log(tuco.style)
+  // console.log(tuco.classList)
+  // console.log(tuco.parentElement)
+  // console.log(tuco.children)
+
+  ////////////// ALTERAÇÃO
+
+  // Mamão com açúcar, é exatamente como você imagina
+
+  // Alteração de CSS
+  // tuco.style.alignSelf = 'flex-start'
+  // * Mas observe que não podemos usar kebab-case no DOM, usamos camelCase
+
+  // Alteração de HTML
+  // tuco.parentElement.innerHTML = '<b>sEu SiTe fOi HaCkEaDo</b>'
+
+  // ATENÇÃO! Para classes, só podemos alterar usando métodos do atributo classList
+  // heading.classList.add('error', 'small')
+  // heading.classList.remove('error')
+
+  ////////////// REMOÇÃO E ADIÇÃO
+
+  // Agora a parte divertida!
+
+  // Para remover, basta desconectar o elemento do seu pai no DOM
+  // document.body.removeChild(heading)
+
+  // Um jeito sapeca de remover o elemento usando sua propria referencia:
+  // tuco.parentElement.removeChild(tuco)
+
+  // Ah, criar elementos eh uma arte fina!
+
+  // Primeiro criamos o elemento:
+  const congrats = document.createElement('span')
+
+  // Acontece que esse metodo cria o elemento, mas NAO o insere na arvore DOM!
+  // Assim, fazemos todas as modificacoes necessarias nele e so entao colocamos ele na DOM
+
+  // Veja bem, o texto que aparece dentro das tags na verdade é um nó também da arvore!
+  // Ele se chama text node, e fazemos um assim:
+  const text = document.createTextNode('Parabéns seu danado, agora tu sabe mexer no HTML com o JS!')
+
+  // Para associar o texto ao span:
+  congrats.appendChild(text)
+
+  // E agora inserir o span no DOM:
+  // document.querySelector('div').appendChild(congrats)
+
+  // Obs: existe o replaceChild() também
+
+  // Et voilá!
+</script>
+
+<style>
+  .error {
+    color: red;
+  }
+
+  .small {
+    font-size: 0.5rem;
+  }
+
+  :root {
+    font-size: 33px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    font-family: 'Comfortaa', sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  img {
+    margin: -2.4rem 0;
+    z-index: -10;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-weight: 300;
+    font-size: 1.7rem;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    font-weight: 300;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    margin-bottom: .5rem;
+  }
+
+  input {
+    margin-right: 1rem;
+    /* ajusta o tamanho do checkbox */
+    transform: scale(2.5);
+  }
+</style>

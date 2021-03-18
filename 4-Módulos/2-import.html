@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulos</title>
+</head>
+<body>
+  <h1>Ola Mundo</h1>
+</body>
+</html>
+
+<!-- eh necessario indicar que este script eh um modulo para termos acesso aos recursos de -->
+<!-- modulos, como o import! -->
+<script type="module">
+  // Queremos acessar os recursos do outro arquivo agora
+
+  // Vamos fazer nosso primeiro import!
+  import Something from './1-export.js'
+  // Observe na sintaxe do caminho! o ./ eh OBRIGATORIO
+
+  // console.log(Something)
+  
+  // Usando essa sintaxe, podemos dar o nome que quisermos, e isso importa o default
+
+  // Para especificar um recurso:
+
+  import {totally_regular_number} from './1-export.js'
+
+  // console.log(totally_regular_number)
+
+  // Observe como a nova sintaxe lembra a regra de desestruturação!
+  // A diferença eh o alias. Aqui eh assim:
+  import {nice_list as five_numbers} from './1-export.js'
+
+  // console.log(five_numbers)
+  // Na desestruturação era como mesmo, rapaziada?
+
+  // Mas e pra importar o default junto cos outros recursos?
+  // Obs: nao eh comum exportar varios recursos E um default. Normalmente eh um ou outro!
+
+  // Assim:
+  import Samething, {nice_number} from './1-export.js'
+  // console.log(Samething, nice_number)
+  
+  // Ou assim:
+  import {default as SamethingAgain, amazing_function} from './1-export.js'
+  // console.log(SamethingAgain, amazing_function)
+
+  // E se quisermos importar tudo, mas sem ter que especificar um por um?
+  import * as ImportedModule from './1-export.js'
+
+  // console.log(ImportedModule)
+  // Observe no recurso chamado default!
+
+  // Isso eh uma boa pratica para manter suas importacoes encapsuladas, caso
+  // aquilo que vc esteja importando nao forneça um default que ja encapsula pra vc!
+
+  // Mas esses imports estao sendo executados nessa ordem mesmo, no meio do codigo?
+  // Sera? Vamos tentar acessar um desses recursos antes de importar ele, la na 1a linha!
+
+  // Esses imports nao sao comandos normais, eles sao todos executados antes do restante do script
+  // Por isso algo assim nao eh valido:
+
+  // if (condition) {
+  //   import {nice_number} from './1-export.js'
+  // }
+
+  // Mas tem como fazer isso! So usamos outra sintaxe
+
+  if (42) {
+    // Aqui usamos de fato a notação de desestruturação!
+    const {nice_number: dynamicly_imported_number} = await import('./1-export.js')
+    // console.log(dynamicly_imported_number, 'Maravilha')
+
+    // EITA mas o que eh esse await?
+    // Voces aprenderão com o mestre do JS brennoso, mas na hora certa!
+    // Por agora, entendam que alguns procedimentos sao "assincronos" e podemos escolher esperar pelo seu resultado
+
+    // Obs: esse import NÃO é uma função, apesar de agir como uma. É apenas uma sintaxe especial do JS!
+    // console.log(import)
+  }
+
+  // Mas raramente, se eh que algum dia, voces vao usar importacoes dinamicas.
+  // Se forem, deem uma estudada - ela tem suas desvantagens. 
+
+  // De fato, essa notacao lembra o antigo require.
+  // Antigamente, navegadores nao suportavam modulos, e alguns frameworks forneciam uma "simulacao" de modulos
+  // No final eles juntavam tudo em uma so coisa
+  // Ele usavam a sintaxe require('caminho/do/arquivo')
+  // Lembrem disso, vcs sem duvida ainda vao ver isso em algum codigo mais antigo
+
+  // De volta pros slides!
+</script>
